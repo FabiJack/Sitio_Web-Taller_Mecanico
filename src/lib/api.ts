@@ -1,5 +1,5 @@
 const BASE = (process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000/api').replace(/\/$/, '');
-const WORKSHOP = process.env.NEXT_PUBLIC_WORKSHOP ?? 'rayo-mcqueen';
+const WORKSHOP = process.env.NEXT_PUBLIC_WORKSHOP ?? 'demo';
 
 /** Cliente mínimo de la API de TuercApp (solo se usa desde el navegador). */
 export async function api<T>(path: string, init?: { method?: string; body?: unknown; query?: Record<string, string> }): Promise<T> {

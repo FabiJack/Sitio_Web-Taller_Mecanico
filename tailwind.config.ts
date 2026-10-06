@@ -7,10 +7,9 @@ export default {
     extend: {
       colors: {
         // Rojo "pit-lane" + carbono + amarillo rayo
-        brand: {
-          50: '#fff1f1', 100: '#ffe0e0', 200: '#ffc6c6', 300: '#ff9d9d', 400: '#ff6464',
-          500: '#f83333', 600: '#e51414', 700: '#c10d0d', 800: '#a00f0f', 900: '#841414', 950: '#480404',
-        },
+        brand: Object.fromEntries(
+          [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950].map((n) => [n, `rgb(var(--brand-${n}) / <alpha-value>)`]),
+        ),
         volt: { 300: '#ffe066', 400: '#ffd43b', 500: '#fcc419', 600: '#f59f00' },
         ink: {
           50: '#f6f7f9', 100: '#eceef2', 200: '#d5d9e2', 300: '#b0b8c9', 400: '#8592ab', 500: '#667491',
@@ -24,7 +23,7 @@ export default {
       boxShadow: {
         card: '0 1px 2px rgb(13 15 21 / 0.04), 0 8px 24px -12px rgb(13 15 21 / 0.12)',
         lift: '0 2px 4px rgb(13 15 21 / 0.06), 0 20px 40px -16px rgb(13 15 21 / 0.25)',
-        glow: '0 0 0 1px rgb(229 20 20 / 0.25), 0 12px 40px -8px rgb(229 20 20 / 0.45)',
+        glow: '0 0 0 1px rgb(var(--brand-600) / 0.25), 0 12px 40px -8px rgb(var(--brand-600) / 0.45)',
       },
       backgroundImage: {
         'grid-fade': 'linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px)',

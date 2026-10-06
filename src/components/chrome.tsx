@@ -5,31 +5,31 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { APP_URL, SPECIALTIES, WORKSHOP } from '@/lib/content';
 
+/** Isotipo genérico (tuerca) en el color de marca. Reemplázalo por el logo del taller si tiene uno. */
 export function LogoMark({ className = 'h-9 w-9' }: { className?: string }) {
   return (
     <svg viewBox="0 0 40 40" className={className} aria-hidden>
       <defs>
         <linearGradient id="lm" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#f83333" />
-          <stop offset="1" stopColor="#a00f0f" />
+          <stop offset="0" style={{ stopColor: 'rgb(var(--brand-500))' }} />
+          <stop offset="1" style={{ stopColor: 'rgb(var(--brand-800))' }} />
         </linearGradient>
       </defs>
       <rect width="40" height="40" rx="11" fill="url(#lm)" />
-      <path d="M8 27h9" stroke="#fff" strokeOpacity=".35" strokeWidth="2.2" strokeLinecap="round" />
-      <path d="M23.5 6 13 22h7.5l-3 12L30 17h-8l1.5-11Z" fill="#ffd43b" stroke="#480404" strokeWidth="1.2" strokeLinejoin="round" />
+      <path d="M20 8.5 30 14.25v11.5L20 31.5 10 25.75v-11.5Z" fill="none" stroke="#fff" strokeWidth="2.6" strokeLinejoin="round" />
+      <circle cx="20" cy="20" r="4.6" fill="none" stroke="#ffd43b" strokeWidth="2.6" />
     </svg>
   );
 }
 
 function Logo({ dark }: { dark?: boolean }) {
+  const words = WORKSHOP.name.trim().split(/\s+/);
+  const last = words.length > 1 ? words.pop() : null;
   return (
     <Link href="/" className="flex items-center gap-2.5">
       <LogoMark />
-      <span className="leading-none">
-        <span className={`block text-[10px] font-bold uppercase tracking-[0.25em] ${dark ? 'text-ink-400' : 'text-ink-500'}`}>Taller</span>
-        <span className={`font-display text-lg font-black uppercase ${dark ? 'text-white' : 'text-ink-950'}`}>
-          Rayo <span className="text-brand-600">McQueen</span>
-        </span>
+      <span className={`font-display text-lg font-black uppercase leading-none ${dark ? 'text-white' : 'text-ink-950'}`}>
+        {words.join(' ')} {last && <span className="text-brand-600">{last}</span>}
       </span>
     </Link>
   );
@@ -88,7 +88,7 @@ export function Footer() {
       <div className="container relative grid gap-10 py-14 md:grid-cols-4">
         <div>
           <Logo dark />
-          <p className="mt-4 text-sm text-ink-400">{WORKSHOP.tagline}. Mecánicos titulados de Duoc UC.</p>
+          <p className="mt-4 text-sm text-ink-400">{WORKSHOP.tagline}.</p>
         </div>
         <div>
           <h4 className="mb-3 text-sm font-semibold text-white">Especialidades</h4>
@@ -117,7 +117,7 @@ export function Footer() {
       </div>
       <div className="relative border-t border-white/10">
         <div className="container flex flex-col gap-2 py-5 text-xs text-ink-500 sm:flex-row sm:justify-between">
-          <p>© {new Date().getFullYear()} McQueen SpA · Proyecto semestral original en <code>legacy/</code></p>
+          <p>© {new Date().getFullYear()} {WORKSHOP.legalName}</p>
           <p>Agenda y tienda con TuercApp</p>
         </div>
       </div>

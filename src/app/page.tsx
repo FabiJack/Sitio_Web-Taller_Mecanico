@@ -2,7 +2,7 @@ import { ArrowRight, BadgeCheck, CalendarCheck, Camera, GraduationCap, MessageCi
 import Image from 'next/image';
 import Link from 'next/link';
 import { SpecialtyIcon } from '@/components/specialty-icon';
-import { APP_URL, HISTORY, SPECIALTIES } from '@/lib/content';
+import { APP_URL, HISTORY, SPECIALTIES, WORKSHOP } from '@/lib/content';
 
 export default function Home() {
   return (
@@ -16,11 +16,11 @@ export default function Home() {
           <div className="max-w-2xl animate-fade-up">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-ink-300 backdrop-blur">
               <span className="flex text-volt-400">{[...Array(5)].map((_, i) => <Star key={i} className="h-3 w-3 fill-current" />)}</span>
-              Bienvenido a nuestro taller · San Joaquín, Santiago
+              Bienvenido a nuestro taller · {WORKSHOP.city}
             </div>
             <h1 className="text-balance font-display text-5xl font-black uppercase leading-[0.95] sm:text-6xl lg:text-7xl">
-              Somos tan rápidos
-              <span className="block bg-gradient-to-r from-brand-500 to-volt-400 bg-clip-text text-transparent">como Rayo McQueen</span>
+              {WORKSHOP.headline[0]}
+              <span className="block bg-gradient-to-r from-brand-500 to-volt-400 bg-clip-text text-transparent">{WORKSHOP.headline[1]}</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg text-ink-300">
               Especialistas en <b className="text-white">electrónica automotriz</b>, <b className="text-white">cajas de cambio</b> y{' '}
@@ -39,7 +39,7 @@ export default function Home() {
         <div className="relative border-t border-white/10 bg-white/[0.02]">
           <div className="container grid grid-cols-2 gap-6 py-6 text-sm md:grid-cols-4">
             {[
-              [GraduationCap, 'Titulados Duoc UC', 'mecánica automotriz'],
+              [GraduationCap, WORKSHOP.credential.title, WORKSHOP.credential.detail],
               [Camera, 'Diagnóstico con fotos', 'antes de cotizar'],
               [MessageCircle, 'Avisos por WhatsApp', 'en cada etapa'],
               [ShieldCheck, 'Bencina y diésel', 'servicio completo'],
@@ -83,7 +83,7 @@ export default function Home() {
 
       {/* Experiencia digital */}
       <section className="relative overflow-hidden bg-ink-950 py-20 text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgb(229_20_20/0.25),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgb(var(--brand-600)/0.25),transparent_60%)]" />
         <div className="container relative grid items-center gap-12 lg:grid-cols-2">
           <div>
             <p className="eyebrow text-volt-400">Sin sorpresas</p>
@@ -138,7 +138,7 @@ export default function Home() {
           </div>
           <div>
             <p className="eyebrow">Nuestra historia</p>
-            <h2 className="mt-3 text-3xl font-bold md:text-4xl">De Duoc UC a tu auto</h2>
+            <h2 className="mt-3 text-3xl font-bold md:text-4xl">Quiénes somos</h2>
             {HISTORY.map((p) => <p key={p.slice(0, 20)} className="mt-4 text-ink-600">{p}</p>)}
           </div>
         </div>

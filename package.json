@@ -1,8 +1,8 @@
 {
-  "name": "taller-rayo-mcqueen-site",
+  "name": "tuercapp-site-template",
   "version": "2.0.0",
   "private": true,
-  "description": "Sitio web del Taller Rayo McQueen (Next.js estático) conectado a la API de TuercApp",
+  "description": "Plantilla de sitio web para talleres mecánicos (Next.js estático) conectada a la API de TuercApp",
   "scripts": {
     "dev": "next dev -p 3002",
     "build": "next build",
